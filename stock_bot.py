@@ -12,10 +12,6 @@ pd.options.mode.chained_assignment = None  # default='warn'
 file_ymd = str(date.today().year) + str(date.today().month).zfill(2) + str(date.today().day).zfill(2)
 text_ymd = str(date.today().year) + '-' + str(date.today().month).zfill(2) + '-' + str(date.today().day).zfill(2)
 
-
-
-
-
 consumer_key = ''
 consumer_secret = ''
 access_token = ''
@@ -25,6 +21,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit = True)
 
+today = pd.to_datetime(date.today())
 
 
 
@@ -185,15 +182,17 @@ for i, j, k, m in zip(stock_list, final_buy_list, pred_open_list, contrib_amt):
 file_ymdt = file_ymd + '_' + datetime.now().strftime('%H%M%S')
 text_ymdt = text_ymd + ' ' + datetime.now().strftime('%H:%M:%S')
 
-update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Thrshld): Buy Value{(''.join(str(a) for a in stocks))}")
+update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open^2 Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Pred/Open^2): Buy Value{(''.join(str(a) for a in stocks))}")
 
 # exports
-text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
-text_file.write(update)
-text_file.close()
+if df['date'][len(df)-1] == today:
+    text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
+    text_file.write(update)
+    text_file.close()
 
-api.update_status(update)
+    api.update_status(update)
 
+else: print(f'{segment_name} not open (most recent date pull != today)')
 
 
 
@@ -354,15 +353,17 @@ for i, j, k, m in zip(stock_list, final_buy_list, pred_open_list, contrib_amt):
 file_ymdt = file_ymd + '_' + datetime.now().strftime('%H%M%S')
 text_ymdt = text_ymd + ' ' + datetime.now().strftime('%H:%M:%S')
 
-update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Thrshld): Buy Value{(''.join(str(a) for a in stocks))}")
+update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open^2 Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Pred/Open^2): Buy Value{(''.join(str(a) for a in stocks))}")
 
 # exports
-text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
-text_file.write(update)
-text_file.close()
+if df['date'][len(df)-1] == today:
+    text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
+    text_file.write(update)
+    text_file.close()
 
-api.update_status(update)
+    api.update_status(update)
 
+else: print(f'{segment_name} not open (most recent date pull != today)')
 
 
 
@@ -523,17 +524,19 @@ for i, j, k, m in zip(stock_list, final_buy_list, pred_open_list, contrib_amt):
 file_ymdt = file_ymd + '_' + datetime.now().strftime('%H%M%S')
 text_ymdt = text_ymd + ' ' + datetime.now().strftime('%H:%M:%S')
 
-update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Thrshld): Buy Value{(''.join(str(a) for a in stocks))}")
+update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open^2 Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Pred/Open^2): Buy Value{(''.join(str(a) for a in stocks))}")
 
 # exports
-text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
-text_file.write(update)
-text_file.close()
+if df['date'][len(df)-1] == today:
+    text_file = open(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.txt', 'w')
+    text_file.write(update)
+    text_file.close()
 
-final_df.to_excel(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.xlsx', index = False)
+    final_df.to_excel(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.xlsx', index = False)
 
-api.update_status(update)
+    api.update_status(update)
 
+else: print(f'{segment_name} not open (most recent date pull != today)')
 
 
 
@@ -694,7 +697,11 @@ for i, j, k, m in zip(stock_list, final_buy_list, pred_open_list, contrib_amt):
 file_ymdt = file_ymd + '_' + datetime.now().strftime('%H%M%S')
 text_ymdt = text_ymd + ' ' + datetime.now().strftime('%H:%M:%S')
 
-update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Thrshld): Buy Value{(''.join(str(a) for a in stocks))}")
+update = (f"{text_ymdt}\nRoll Hist Days = {roll_days}, Pred/Open^2 Threshold = {buyvalue}, Multiplier = {multiplier}\nStk (Pred/Open^2): Buy Value{(''.join(str(a) for a in stocks))}")
 
 # exports
-final_df.to_excel(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.xlsx', index = False)
+if df['date'][len(df)-1] == today:
+    final_df.to_excel(f'C:/Users/james/OneDrive/Desktop/Projects/twitter_bot/export/{segment_name}_{file_ymdt}.xlsx', index = False)
+
+else: print(f'{segment_name} not open (most recent date pull != today)')
+
