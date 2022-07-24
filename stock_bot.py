@@ -406,13 +406,13 @@ else:
         # text_file.close()
 
         if trade_type == 'stock':
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [CRSR.media_id, GOOG.media_id, INTC.media_id, MSFT.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [NVDA.media_id, QQQ.media_id, SBUX.media_id, SQ.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [TSLA.media_id, TSM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [CRSR.media_id, GOOG.media_id, INTC.media_id, MSFT.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [NVDA.media_id, QQQ.media_id, SBUX.media_id, SQ.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [TSLA.media_id, TSM.media_id])
         else:
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [BTC_USD.media_id, ETH_USD.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [BTC_USD.media_id, ETH_USD.media_id])
 
         print(f'{segment_name} complete')
 
@@ -802,13 +802,13 @@ else:
         # text_file.close()
 
         if trade_type == 'stock':
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [CRSR.media_id, GOOG.media_id, INTC.media_id, MSFT.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [NVDA.media_id, QQQ.media_id, SBUX.media_id, SQ.media_id])
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [TSLA.media_id, TSM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [AAPL.media_id, AMD.media_id, AMZN.media_id, CRM.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [CRSR.media_id, GOOG.media_id, INTC.media_id, MSFT.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [NVDA.media_id, QQQ.media_id, SBUX.media_id, SQ.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [TSLA.media_id, TSM.media_id])
         else:
-            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})", media_ids = [BTC_USD.media_id, ETH_USD.media_id])
+            api.update_status(status = f"{text_ymdt} ({today.strftime('%a')})\n{', '.join(stock_list)}", media_ids = [BTC_USD.media_id, ETH_USD.media_id])
 
         print(f'{segment_name} complete')
 
